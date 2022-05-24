@@ -1,0 +1,27 @@
+{
+    "name": "rpmeir/tbpmn",
+    "description": "TBPMN Plugin",
+    "type": "library",
+    "keywords": ["swiper","adianti"],
+    "homepage": "https://github.com/rpmeir/tbpmn",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rpmeir\\Tbpmn\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rodrigo Pires Meira",
+            "email": "rpmeir@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rpmeir/tbpmn"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
