@@ -1,34 +1,44 @@
 
 // modeler instance
-const bpmnModeler = new BpmnJS({
+const modeler = new BpmnJS({
     container: '#canvas',
+    propertiesPanel: {
+        parent: '#properties'
+    },
     keyboard: {
         bindTo: window
     }
 });
 
-async function createDiagram() {
+const eventBus = modeler.get('eventBus');
+const commandStack = modeler.get('commandStack');
+const elementRegistry = modeler.get('elementRegistry');
+const currentElement = { element: null };
+
+var de = null;
+
+// Create new diagram
+$('#create-button').click(async () => {
     try {
-        const result = await bpmnModeler.createDiagram();
+        const result = await modeler.createDiagram();
         const { warnings } = result;
-        console.log(warnings);
+        if(warnings)
+            console.log(warnings);
     } catch (err) {
         console.log(err.message, err.warnings);
     }
-}
+});
 
-$('#create-button').click(createDiagram);
-
-async function openDiagram(bpmnXML) {
+const openDiagram = async (bpmnXML) => {
     try {
-        const result = await bpmnModeler.importXML(bpmnXML);
+        const result = await modeler.importXML(bpmnXML);
         const { warnings } = result;
-        console.log(warnings);
+        if(warnings)
+            console.log(warnings);
     } catch (err) {
-        console.log(err.message, err.warnings);
+        console.error(err.message, err.warnings);
     }
-}
-
+};
 const fileElem = document.getElementById("fileElem");
 fileElem.addEventListener("change", function (e) {
     const [file] = this.files;
@@ -42,7 +52,6 @@ fileElem.addEventListener("change", function (e) {
         reader.readAsText(file);
     }
 }, false);
-
 const fileSelect = document.getElementById("open-button");
 fileSelect.addEventListener("click", async () => {
     if (fileElem) {
@@ -50,37 +59,56 @@ fileSelect.addEventListener("click", async () => {
     }
 }, false);
 
+// Update Id Property of selected element.
+$('#edit-properties').click(() => {
+    try {
+        const newIdName = prompt('Informe o novo Id: ');
+        if(newIdName != null && currentElement.element != null){
+            let selectedElement = document.getElementById('selectedElement');
+            commandStack.execute('element.updateProperties', {
+                element: currentElement.element,
+                properties: { id: newIdName }
+            });
+            selectedElement.innerText = newIdName;
+        }
+    } catch (err) {
+        console.error(err);
+    }
+});
 
-/**
-* Save diagram contents and print them to the console.
-*/
-async function exportDiagram() {
+// Save diagram contents and print them to the console.
+$('#console-bpmn').click(async () => {
     const options = { format: true };
     try {
-        const result = await bpmnModeler.saveXML(options);
+        const result = await modeler.saveXML(options);
         const { xml } = result;
         console.log(xml);
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
-}
+});
 
-// wire save button
-$('#save-button').click(exportDiagram);
-
-async function saveSVG() {
+// Console log svg
+$('#console-svg').click(async () => {
     const options = { format: true };
     try {
-        const result = await bpmnModeler.saveSVG(options);
+        const result = await modeler.saveSVG(options);
         const { svg } = result;
         console.log(svg);
     } catch (err) {
-        console.log(err);
+        console.error( err);
     }
-}
+});
 
-$('#save-svg').click(saveSVG);
-
+eventBus.on('element.click', function (e){
+    const elementId = e.element.id;
+    console.log('element.click', 'on', e.element.id);
+    if(elementId != null) {
+        currentElement.element = e.element;
+        let selectedElement = document.getElementById('selectedElement');
+        selectedElement.innerText = e.element.id;
+    }
+});
 
 // load external diagram file via AJAX and open it
 // $.get(diagramUrl, openDiagram, 'text');

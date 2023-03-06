@@ -14,7 +14,7 @@
         <script src="assets/js/bpmn-modeler.production.min.js"></script>
 
         <!-- needed for this example only -->
-        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery-3.6.3.min.js"></script>
 
         <!-- example styles -->
         <link rel="stylesheet" href="assets/css/tbpmn.css">
@@ -26,10 +26,13 @@
             <div id="properties"></div>
         </div>
 
-        <button id="create-button">new diagram</button>
-        <button id="save-button">print to console</button>
-        <button id="open-button">open diagram</button>
-        <button id="save-svg">save svg</button>
+        <div id="customActions" >
+            <button id="create-button">&#128196; novo</button>
+            <button id="open-button">&#128194; open</button>
+            <button id="edit-properties">&#128221; edit [<span id="selectedElement" data-selected-id="" ></span>]</button>
+            <button id="console-bpmn">&#128187; console</button>
+            <button id="console-svg">&#128190; svg</button>
+        </div>
         
         <input type="file" id="fileElem" multiple accept="*.bpmn" style="display:none">
         

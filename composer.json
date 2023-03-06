@@ -2,7 +2,7 @@
     "name": "rpmeir/tbpmn",
     "description": "TBPMN Plugin",
     "type": "library",
-    "keywords": ["swiper","adianti"],
+    "keywords": ["bpmn","adianti"],
     "homepage": "https://github.com/rpmeir/tbpmn",
     "license": "MIT",
     "autoload": {

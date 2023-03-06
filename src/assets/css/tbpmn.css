@@ -24,26 +24,22 @@ body,
     /* color elements as red */
 }
 
-#create-button {
-    position: fixed;
+.bjs-breadcrumbs {
+    display: block;
+}
+
+#customActions {
+    position: absolute;
     bottom: 20px;
     left: 20px;
+    background-color: hsl(225, 10%, 97%);
+    border: solid 1px hsl(225, 10%, 75%);
+    border-radius: 2px;
+    padding: 12px;
+    box-sizing: border-box;
 }
 
-#save-button {
-    position: fixed;
-    bottom: 20px;
-    left: 120px;
-}
-
-#open-button {
-    position: fixed;
-    bottom: 20px;
-    left: 235px;
-}
-
-#save-svg {
-    position: fixed;
-    bottom: 20px;
-    left: 340px;
+#customActions button {
+    font-size: 15px;
+    padding: 5px;
 }
