@@ -102,7 +102,8 @@ $('#console-svg').click(async () => {
 
 eventBus.on('element.click', function (e){
     const elementId = e.element.id;
-    console.log('element.click', 'on', e.element.id);
+    console.log(e.element)
+    console.log('element.click', 'on', `id: ${elementId}`);
     if(elementId != null) {
         currentElement.element = e.element;
         let selectedElement = document.getElementById('selectedElement');
