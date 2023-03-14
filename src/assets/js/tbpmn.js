@@ -59,17 +59,17 @@ fileSelect.addEventListener("click", async () => {
     }
 }, false);
 
-// Update Id Property of selected element.
+// Update name Property of selected element.
 $('#edit-properties').click(() => {
     try {
-        const newIdName = prompt('Informe o novo Id: ');
-        if(newIdName != null && currentElement.element != null){
+        const newName = prompt('Informe o novo nome: ');
+        if(newName != null && currentElement.element != null){
             let selectedElement = document.getElementById('selectedElement');
             commandStack.execute('element.updateProperties', {
                 element: currentElement.element,
-                properties: { id: newIdName }
+                properties: { name: newName }
             });
-            selectedElement.innerText = newIdName;
+            selectedElement.innerText = newName;
         }
     } catch (err) {
         console.error(err);
