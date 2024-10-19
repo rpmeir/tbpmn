@@ -1,0 +1,74 @@
+
+html,
+body,
+#modeler,
+#canvas {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.diagram-note {
+    background-color: rgba(66, 180, 21, 0.7);
+    color: White;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 5px;
+    min-height: 16px;
+    width: 50px;
+    text-align: center;
+}
+
+.needs-discussion:not(.djs-connection) .djs-visual> :nth-child(1) {
+    stroke: rgba(66, 180, 21, 0.7) !important;
+    /* color elements as red */
+}
+
+#new {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+#save {
+    position: fixed;
+    bottom: 20px;
+    left: 70px;
+}
+
+#save-as {
+    position: fixed;
+    bottom: 20px;
+    left: 125px;
+}
+
+#open {
+    position: fixed;
+    bottom: 20px;
+    left: 200px;
+}
+
+#selectedElementId {
+    position: fixed;
+    bottom: 20px;
+    left: 270px;
+}
+
+#selectedElementName {
+    position: fixed;
+    bottom: 20px;
+    left: 540px;
+}
+
+#selectedElementColorFill {
+    position: fixed;
+    bottom: 20px;
+    left: 840px;
+}
+
+#selectedElementColorStroke {
+    position: fixed;
+    bottom: 20px;
+    left: 940px;
+}

@@ -59,6 +59,7 @@ fileSelect.addEventListener("click", async () => {
     }
 }, false);
 
+
 // Update name Property of selected element.
 $('#edit-properties').click(() => {
     try {

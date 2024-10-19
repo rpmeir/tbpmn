@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8" />
-        <title>BPMN.io</title>
-
-        <!-- required modeler styles -->
-        <link rel="stylesheet" href="assets/css/diagram-js.css">
+        <title>tbpmn</title>
         <link rel="stylesheet" href="assets/css/bpmn-js.css">
+        <link rel="stylesheet" href="assets/css/diagram-js.css">
         <link rel="stylesheet" href="assets/bpmn-font/css/bpmn.css">
 
-        <!-- modeler distro -->
-        <script src="assets/js/bpmn-modeler.production.min.js"></script>
+        <script src="assets/js/bpmn-modeler.development.js"></script>
 
-        <!-- needed for this example only -->
-        <script src="assets/js/jquery-3.6.3.min.js"></script>
-
-        <!-- example styles -->
-        <link rel="stylesheet" href="assets/css/tbpmn.css">
+        <link rel="stylesheet" href="assets/css/app.css">
     </head>
-
     <body>
         <div id="modeler">
             <div id="canvas"></div>
             <div id="properties"></div>
         </div>
 
-        <div id="customActions" >
-            <button id="create-button">&#128196; novo</button>
-            <button id="open-button">&#128194; open</button>
-            <button id="edit-properties">&#128221; edit [<span id="selectedElement" data-selected-id="" ></span>]</button>
-            <button id="console-bpmn">&#128187; console</button>
-            <button id="console-svg">&#128190; svg</button>
-        </div>
-        
-        <input type="file" id="fileElem" multiple accept="*.bpmn" style="display:none">
-        
-        <script src="assets/js/tbpmn.js" ></script>
+        <button id="new">New</button>
+        <button id="save-as">Save As</button>
+        <button id="save">Save</button>
+        <button id="open">Open</button>
+        <span id="selectedElementId" >
+            Id: <input type="text" id="id" autocomplete="off" disabled >
+            <button id="editId">&#128221;</button>
+            <button id="saveId" style="display: none">&#9989;</button>
+            <button id="cancelId" style="display: none">&#10060;</button>
+        </span>
+        <span id="selectedElementName" >
+            Name: <input type="text" id="name" autocomplete="off" disabled >
+            <button id="editName">&#128221;</button>
+            <button id="saveName" style="display: none">&#9989;</button>
+            <button id="cancelName" style="display: none">&#10060;</button>
+        </span>
+        <span id="selectedElementColorFill" >
+            Fill: <input type="color" id="colorFill">
+        </span>
+        <span id="selectedElementColorStroke" >
+            Stroke: <input type="color" id="colorStroke">
+        </span>
 
+        <script src="assets/js/app.js"></script>
+
+        <svg id="helper-svg" style="visibility: hidden; position: fixed; width: 0px; height: 0px;"></svg>
     </body>
-
 </html>
